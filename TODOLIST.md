@@ -27,3 +27,5 @@ Utilisation d'une bibliotheque graphique pour la modélistation du terrain
 Box type aquarium  
 Mise en place de couleurs en fonction de l'altitude  
 Modelisation de l'eau  
+Positionnement de la caméra  
+Mise a l'échelle  

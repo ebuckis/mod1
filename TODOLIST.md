@@ -11,9 +11,9 @@ Les reliefs doivent etre des courbes (pas comme FDF)
 ## 3. Simulation de l'eau
 Creation des algo pour les différents types de simulations  
 
-### 1.1 Remplissage depuis le bas
+### 3.1 Remplissage depuis le bas
 
-### 2.2 Vague
+### 3.2 Vague
 Mouvement de l'eau  
 Répartition de l'eau jusqu'a la stabilité
 

@@ -1,4 +1,4 @@
-#import math
+import math
 import copy
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,14 +7,32 @@ from mpl_toolkits import mplot3d
 
 
 def data(i, ax, X, Y, Z, surface):
-    print("i=", i)
     Z.append(X * 0)
+    #center area where the water comes from
     for j in range(len(Z[i])):
         for k in range(len(Z[i][j])):
             Z[i][j][k] = 1 if j in range (8, 12) and k in range(8, 12) else Z[i][j][k]
-    for j in range(1, 18): # I don't manage the edge evolution
-        for k in range(1, 18): # I don't manage the edge evolution
-            Z[i + 1][j][k] = (Z[i][j + 1][k] +Z[i][j - 1][k] + Z[i][j][k + 1] + Z[i][j][k - 1]) / 4 
+    #water propagation formule with edge and corner case
+    for j in range(20): 
+        for k in range(20):
+            if j == 0 and k == 0:
+                Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j][k + 1]) / 2 
+            elif j == 0 and k == 19:
+                Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j][k - 1]) / 2 
+            elif j == 19 and k == 0:
+                Z[i + 1][j][k] = (Z[i][j - 1][k] + Z[i][j][k + 1]) / 2 
+            elif j == 19 and k == 19:
+                Z[i + 1][j][k] = (Z[i][j - 1][k] + Z[i][j][k - 1]) / 2 
+            elif j == 0:
+                Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j][k + 1] + Z[i][j][k - 1]) / 3 
+            elif j == 19:
+                Z[i + 1][j][k] = (Z[i][j - 1][k] + Z[i][j][k + 1] + Z[i][j][k - 1]) / 3 
+            elif k == 0:
+                Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j - 1][k] + Z[i][j][k + 1]) / 3 
+            elif k == 19:
+                Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j - 1][k] + Z[i][j][k - 1]) / 3 
+            else:
+                Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j - 1][k] + Z[i][j][k + 1] + Z[i][j][k - 1]) / 4 
     ax.clear()
     ax.set_zlim(0, 1)
     surface = ax.plot_surface(X, Y, Z[i], rstride=1, cstride=1,
@@ -27,6 +45,7 @@ def main():
     X, Y = np.meshgrid(x, y)
     Z = []
     Z.append(X * 0) 
+    #center area where the water comes from
     for j in range(len(Z[0])):
         for k in range(len(Z[0][j])):
             Z[0][j][k] = 1 if j in range (8, 12) and k in range(8, 12) else 0

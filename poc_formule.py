@@ -8,13 +8,14 @@ from mpl_toolkits import mplot3d
 
 def data(i, ax, X, Y, Z, surface):
     Z.append(X * 0)
-    #center area where the water comes from
+    # center area where the water comes from
     for j in range(len(Z[i])):
         for k in range(len(Z[i][j])):
             Z[i][j][k] = 1 if j in range (8, 12) and k in range(8, 12) else Z[i][j][k]
-    #water propagation formule with edge and corner case
+    # water propagation formule 
     for j in range(20): 
         for k in range(20):
+            # corner cases
             if j == 0 and k == 0:
                 Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j][k + 1]) / 2 
             elif j == 0 and k == 19:
@@ -22,7 +23,8 @@ def data(i, ax, X, Y, Z, surface):
             elif j == 19 and k == 0:
                 Z[i + 1][j][k] = (Z[i][j - 1][k] + Z[i][j][k + 1]) / 2 
             elif j == 19 and k == 19:
-                Z[i + 1][j][k] = (Z[i][j - 1][k] + Z[i][j][k - 1]) / 2 
+                Z[i + 1][j][k] = (Z[i][j - 1][k] + Z[i][j][k - 1]) / 2
+            # edge cases
             elif j == 0:
                 Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j][k + 1] + Z[i][j][k - 1]) / 3 
             elif j == 19:
@@ -31,6 +33,7 @@ def data(i, ax, X, Y, Z, surface):
                 Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j - 1][k] + Z[i][j][k + 1]) / 3 
             elif k == 19:
                 Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j - 1][k] + Z[i][j][k - 1]) / 3 
+            #general case
             else:
                 Z[i + 1][j][k] = (Z[i][j + 1][k] + Z[i][j - 1][k] + Z[i][j][k + 1] + Z[i][j][k - 1]) / 4 
     ax.clear()

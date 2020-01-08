@@ -11,14 +11,14 @@ Algo courbe, surface Bézier, NURBS, ... ?
 Ou on réutilise l'algo de l'eau avec contraintes au sommmet et quelques itérations et petit coef pour dessiner la map du terrain
 
 ## 3. Simulation de l'eau
-Creation des algo pour les différents types de simulations
-On utilise l'algo height fields, cf. page2 slide du haut pdf NVIDIA 
-Une matrice 2d pour la hauteur d'eau
-Une matrice 2d pour la vitesse de l'eau
-Pour chaque incrément de temps, on calcul la nouvelle matrice de vitesse puis la nouvelle matrice de hauteur
-On multiplie la vitesse par un coef < 1 sinon pas de stabilité, les vagues ne s'arrêtent jamais
-Coef entre 0.9 et 0.95 selon le résultat voulu
-Seul les conditions de hauteur imposées vont varier selon les cas ci-dessous.
+Creation des algo pour les différents types de simulations 
+On utilise l'algo height fields, cf. page2 slide du haut pdf NVIDIA  
+Une matrice 2d pour la hauteur d'eau 
+Une matrice 2d pour la vitesse de l'eau 
+Pour chaque incrément de temps, on calcul la nouvelle matrice de vitesse puis la nouvelle matrice de hauteur 
+On multiplie la vitesse par un coef < 1 sinon pas de stabilité, les vagues ne s'arrêtent jamais 
+Coef entre 0.9 et 0.95 selon le résultat voulu 
+Seul les conditions de hauteur imposées vont varier selon les cas ci-dessous. 
 
 ### 3.1 Remplissage depuis le bas
 On ajoute de la hauteur d'eau partout sur la carte par les bords

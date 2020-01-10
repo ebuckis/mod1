@@ -44,7 +44,7 @@ def data(i, ax, X, Y, Z, V, surface):
             #general case
             else:
                 V[i + 1][j][k] = V[i][j][k] + (Z[i][j + 1][k] + Z[i][j - 1][k] + Z[i][j][k + 1] + Z[i][j][k - 1]) / 4 - Z[i][j][k]
-            V[i + 1][j][k] *= 0.90
+            V[i + 1][j][k] *= 0.1
             Z[i + 1][j][k] = Z[i][j][k] + V[i + 1][j][k]
     ax.clear()
     ax.set_zlim(0, 1)

@@ -51,3 +51,6 @@ Language compilé C ou C++ ?
 Multi Threading ?
 OpenGL GPU ?
 OpenCL ?
+
+## 6. Liens
+https://en.wikipedia.org/wiki/Inverse_distance_weighting
